@@ -25,6 +25,14 @@ const NewFurniture = props => {
     }
   };
 
+  const rightAction = () => {
+    if (activePage === 0) {
+      return;
+    } else {
+      setActivePage(activePage - 1);
+    }
+  };
+
   const { categories, products } = props;
 
   const categoryProducts = products.filter(item => item.category === activeCategory);
@@ -71,15 +79,14 @@ const NewFurniture = props => {
             </div>
           </div>
         </div>
-        <div className='row'>
-          <Swipeable leftAction={leftAction}>
-            {categoryProducts.slice(activePage * 8, (activePage + 1) * 8).map(item => (
-              <div key={item.id} className='col-3'>
-                <ProductBox {...item} />
-              </div>
-            ))}
-          </Swipeable>
-        </div>
+
+        <Swipeable leftAction={leftAction} rightAction={rightAction}>
+          {categoryProducts.slice(activePage * 8, (activePage + 1) * 8).map(item => (
+            <div key={item.id} className='col-3'>
+              <ProductBox {...item} />
+            </div>
+          ))}
+        </Swipeable>
       </div>
     </div>
   );
