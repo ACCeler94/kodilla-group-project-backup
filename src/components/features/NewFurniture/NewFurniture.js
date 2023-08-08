@@ -18,17 +18,13 @@ const NewFurniture = props => {
   };
 
   const leftAction = () => {
-    if (activePage === pagesCount - 1) {
-      return;
-    } else {
+    if (activePage !== pagesCount - 1) {
       setActivePage(activePage + 1);
     }
   };
 
   const rightAction = () => {
-    if (activePage === 0) {
-      return;
-    } else {
+    if (activePage !== 0) {
       setActivePage(activePage - 1);
     }
   };
